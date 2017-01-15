@@ -14,6 +14,9 @@
 		2FE4A7591E2A2879006CACF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A7571E2A2879006CACF2 /* LaunchScreen.storyboard */; };
 		2FE4A7641E2A2879006CACF2 /* CaptureSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7631E2A2879006CACF2 /* CaptureSwiftTests.swift */; };
 		2FE4A76F1E2A2879006CACF2 /* CaptureSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A76E1E2A2879006CACF2 /* CaptureSwiftUITests.swift */; };
+		2FE4A77D1E2A57BE006CACF2 /* CaptureFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */; };
+		2FE4A77E1E2A57C2006CACF2 /* CaptureFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */; };
+		2FE4A77F1E2A6DD1006CACF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A7551E2A2879006CACF2 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,7 @@
 		2FE4A76A1E2A2879006CACF2 /* CaptureSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaptureSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE4A76E1E2A2879006CACF2 /* CaptureSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSwiftUITests.swift; sourceTree = "<group>"; };
 		2FE4A7701E2A2879006CACF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				2FE4A7551E2A2879006CACF2 /* Assets.xcassets */,
 				2FE4A7571E2A2879006CACF2 /* LaunchScreen.storyboard */,
 				2FE4A75A1E2A2879006CACF2 /* Info.plist */,
+				2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */,
 			);
 			path = CaptureSwift;
 			sourceTree = "<group>";
@@ -242,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE4A77F1E2A6DD1006CACF2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE4A77D1E2A57BE006CACF2 /* CaptureFileManager.swift in Sources */,
 				2FE4A7511E2A2879006CACF2 /* ViewController.swift in Sources */,
 				2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */,
 			);
@@ -268,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE4A77E1E2A57C2006CACF2 /* CaptureFileManager.swift in Sources */,
 				2FE4A7641E2A2879006CACF2 /* CaptureSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

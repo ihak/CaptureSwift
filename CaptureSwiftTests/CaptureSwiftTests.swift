@@ -21,6 +21,52 @@ class CaptureSwiftTests: XCTestCase {
         super.tearDown()
     }
     
+    func testCFMDocumentPath() {
+        let path = CaptureFileManager.documentPath()
+        print("Path: \(path)")
+        XCTAssertNotNil(path)
+    }
+    
+    func testCFMTempPath() {
+        let path = CaptureFileManager.temporaryPath()
+        print("Path: \(path)")
+        XCTAssertNotNil(path)
+    }
+    
+    func testCFMDocumentPathForFile() {
+        let fileName = "abc.png"
+        let path = CaptureFileManager.documentPath(fileName)
+        print("Path: \(path)")
+        XCTAssertNotNil(path)
+    }
+    
+    func testCFMTemporaryPathForFile() {
+        let fileName = "abc.png"
+        let path = CaptureFileManager.temporaryPath(fileName)
+        print("Path: \(path)")
+        XCTAssertNotNil(path)
+    }
+    
+    func testSaveImage() {
+        XCTAssert(CaptureFileManager.save(image: UIImage(named: "temp")!, withName: "abc.jpeg"))
+    }
+    
+    func testRemoveImage() {
+        XCTAssert(CaptureFileManager.remove(file: "abc.jpeg"))
+    }
+    
+    func testTempDirectoryContents() {
+        XCTAssertGreaterThan(CaptureFileManager.listFilesInTempDirectory().count, 0)
+    }
+    
+    func testEmptyTempDirectory() {
+        CaptureFileManager.emptyTempDirectory()
+        XCTAssertEqual(CaptureFileManager.listFilesInTempDirectory().count, 0)
+    }
+    
+    func testGetImage() {
+        XCTAssertNotNil(CaptureFileManager.getImage(file: "abc.jpeg"))
+    }
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
