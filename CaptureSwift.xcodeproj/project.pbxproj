@@ -17,6 +17,24 @@
 		2FE4A77D1E2A57BE006CACF2 /* CaptureFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */; };
 		2FE4A77E1E2A57C2006CACF2 /* CaptureFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */; };
 		2FE4A77F1E2A6DD1006CACF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A7551E2A2879006CACF2 /* Assets.xcassets */; };
+		2FE4A7811E2B5BB2006CACF2 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7801E2B5BB2006CACF2 /* CaptureViewController.swift */; };
+		2FE4A7841E2B5C0E006CACF2 /* Capture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A7831E2B5C0E006CACF2 /* Capture.storyboard */; };
+		2FE4A7901E2B6372006CACF2 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7871E2B6372006CACF2 /* CameraEngine.swift */; };
+		2FE4A7911E2B6372006CACF2 /* CameraEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7871E2B6372006CACF2 /* CameraEngine.swift */; };
+		2FE4A7921E2B6372006CACF2 /* CameraEngineCaptureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7881E2B6372006CACF2 /* CameraEngineCaptureOutput.swift */; };
+		2FE4A7931E2B6372006CACF2 /* CameraEngineCaptureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7881E2B6372006CACF2 /* CameraEngineCaptureOutput.swift */; };
+		2FE4A7941E2B6372006CACF2 /* CameraEngineDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7891E2B6372006CACF2 /* CameraEngineDevice.swift */; };
+		2FE4A7951E2B6372006CACF2 /* CameraEngineDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7891E2B6372006CACF2 /* CameraEngineDevice.swift */; };
+		2FE4A7961E2B6372006CACF2 /* CameraEngineDeviceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78A1E2B6372006CACF2 /* CameraEngineDeviceInput.swift */; };
+		2FE4A7971E2B6372006CACF2 /* CameraEngineDeviceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78A1E2B6372006CACF2 /* CameraEngineDeviceInput.swift */; };
+		2FE4A7981E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78B1E2B6372006CACF2 /* CameraEngineFileManager.swift */; };
+		2FE4A7991E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78B1E2B6372006CACF2 /* CameraEngineFileManager.swift */; };
+		2FE4A79A1E2B6372006CACF2 /* CameraEngineGifEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78C1E2B6372006CACF2 /* CameraEngineGifEncoder.swift */; };
+		2FE4A79B1E2B6372006CACF2 /* CameraEngineGifEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78C1E2B6372006CACF2 /* CameraEngineGifEncoder.swift */; };
+		2FE4A79C1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift */; };
+		2FE4A79D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift */; };
+		2FE4A79E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */; };
+		2FE4A79F1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +69,17 @@
 		2FE4A76E1E2A2879006CACF2 /* CaptureSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSwiftUITests.swift; sourceTree = "<group>"; };
 		2FE4A7701E2A2879006CACF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureFileManager.swift; sourceTree = "<group>"; };
+		2FE4A7801E2B5BB2006CACF2 /* CaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+		2FE4A7831E2B5C0E006CACF2 /* Capture.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Capture.storyboard; sourceTree = "<group>"; };
+		2FE4A7861E2B6372006CACF2 /* CameraEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraEngine.h; sourceTree = "<group>"; };
+		2FE4A7871E2B6372006CACF2 /* CameraEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngine.swift; sourceTree = "<group>"; };
+		2FE4A7881E2B6372006CACF2 /* CameraEngineCaptureOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineCaptureOutput.swift; sourceTree = "<group>"; };
+		2FE4A7891E2B6372006CACF2 /* CameraEngineDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineDevice.swift; sourceTree = "<group>"; };
+		2FE4A78A1E2B6372006CACF2 /* CameraEngineDeviceInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineDeviceInput.swift; sourceTree = "<group>"; };
+		2FE4A78B1E2B6372006CACF2 /* CameraEngineFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineFileManager.swift; sourceTree = "<group>"; };
+		2FE4A78C1E2B6372006CACF2 /* CameraEngineGifEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineGifEncoder.swift; sourceTree = "<group>"; };
+		2FE4A78D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineMetadataOutput.swift; sourceTree = "<group>"; };
+		2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineVideoEncoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +130,14 @@
 		2FE4A74D1E2A2879006CACF2 /* CaptureSwift */ = {
 			isa = PBXGroup;
 			children = (
+				2FE4A7851E2B6372006CACF2 /* CameraEngine */,
 				2FE4A74E1E2A2879006CACF2 /* AppDelegate.swift */,
 				2FE4A7501E2A2879006CACF2 /* ViewController.swift */,
 				2FE4A7521E2A2879006CACF2 /* Main.storyboard */,
 				2FE4A7551E2A2879006CACF2 /* Assets.xcassets */,
 				2FE4A7571E2A2879006CACF2 /* LaunchScreen.storyboard */,
 				2FE4A75A1E2A2879006CACF2 /* Info.plist */,
-				2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */,
+				2FE4A7821E2B5BEB006CACF2 /* CaptureFramework */,
 			);
 			path = CaptureSwift;
 			sourceTree = "<group>";
@@ -128,6 +158,32 @@
 				2FE4A7701E2A2879006CACF2 /* Info.plist */,
 			);
 			path = CaptureSwiftUITests;
+			sourceTree = "<group>";
+		};
+		2FE4A7821E2B5BEB006CACF2 /* CaptureFramework */ = {
+			isa = PBXGroup;
+			children = (
+				2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */,
+				2FE4A7801E2B5BB2006CACF2 /* CaptureViewController.swift */,
+				2FE4A7831E2B5C0E006CACF2 /* Capture.storyboard */,
+			);
+			name = CaptureFramework;
+			sourceTree = "<group>";
+		};
+		2FE4A7851E2B6372006CACF2 /* CameraEngine */ = {
+			isa = PBXGroup;
+			children = (
+				2FE4A7861E2B6372006CACF2 /* CameraEngine.h */,
+				2FE4A7871E2B6372006CACF2 /* CameraEngine.swift */,
+				2FE4A7881E2B6372006CACF2 /* CameraEngineCaptureOutput.swift */,
+				2FE4A7891E2B6372006CACF2 /* CameraEngineDevice.swift */,
+				2FE4A78A1E2B6372006CACF2 /* CameraEngineDeviceInput.swift */,
+				2FE4A78B1E2B6372006CACF2 /* CameraEngineFileManager.swift */,
+				2FE4A78C1E2B6372006CACF2 /* CameraEngineGifEncoder.swift */,
+				2FE4A78D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift */,
+				2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */,
+			);
+			path = CameraEngine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE4A7591E2A2879006CACF2 /* LaunchScreen.storyboard in Resources */,
+				2FE4A7841E2B5C0E006CACF2 /* Capture.storyboard in Resources */,
 				2FE4A7561E2A2879006CACF2 /* Assets.xcassets in Resources */,
 				2FE4A7541E2A2879006CACF2 /* Main.storyboard in Resources */,
 			);
@@ -265,9 +322,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE4A7941E2B6372006CACF2 /* CameraEngineDevice.swift in Sources */,
 				2FE4A77D1E2A57BE006CACF2 /* CaptureFileManager.swift in Sources */,
+				2FE4A7811E2B5BB2006CACF2 /* CaptureViewController.swift in Sources */,
+				2FE4A7921E2B6372006CACF2 /* CameraEngineCaptureOutput.swift in Sources */,
+				2FE4A7901E2B6372006CACF2 /* CameraEngine.swift in Sources */,
 				2FE4A7511E2A2879006CACF2 /* ViewController.swift in Sources */,
+				2FE4A79C1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */,
+				2FE4A7981E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */,
 				2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */,
+				2FE4A79A1E2B6372006CACF2 /* CameraEngineGifEncoder.swift in Sources */,
+				2FE4A7961E2B6372006CACF2 /* CameraEngineDeviceInput.swift in Sources */,
+				2FE4A79E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +342,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FE4A77E1E2A57C2006CACF2 /* CaptureFileManager.swift in Sources */,
+				2FE4A7971E2B6372006CACF2 /* CameraEngineDeviceInput.swift in Sources */,
 				2FE4A7641E2A2879006CACF2 /* CaptureSwiftTests.swift in Sources */,
+				2FE4A7951E2B6372006CACF2 /* CameraEngineDevice.swift in Sources */,
+				2FE4A79B1E2B6372006CACF2 /* CameraEngineGifEncoder.swift in Sources */,
+				2FE4A79F1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */,
+				2FE4A7931E2B6372006CACF2 /* CameraEngineCaptureOutput.swift in Sources */,
+				2FE4A79D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */,
+				2FE4A7991E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */,
+				2FE4A7911E2B6372006CACF2 /* CameraEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

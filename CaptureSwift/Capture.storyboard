@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dbi-J4-L4N">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Eer-Bd-WU6">
+            <objects>
+                <navigationController storyboardIdentifier="CaptureNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dbi-J4-L4N" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qIT-9t-iGX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="skY-Mm-hXM" kind="relationship" relationship="rootViewController" id="aEV-Ws-ghN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5la-Ga-7sC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1590" y="-195"/>
+        </scene>
+        <!--Capture View Controller-->
+        <scene sceneID="55H-7m-il5">
+            <objects>
+                <viewController id="skY-Mm-hXM" customClass="CaptureViewController" customModule="CaptureSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Sc8-de-NFt"/>
+                        <viewControllerLayoutGuide type="bottom" id="dQM-RT-s93"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c5n-ka-HCc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93K-YD-NS9">
+                                <frame key="frameInset" minX="160" minY="617" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Capture"/>
+                                <connections>
+                                    <action selector="captureButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="rck-QH-3od"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWQ-fE-OLK">
+                                <state key="normal" title="Flash: On"/>
+                                <connections>
+                                    <action selector="flashButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="P6l-8s-esZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-iZ-5u2">
+                                <state key="normal" title="Camera: Front"/>
+                                <connections>
+                                    <action selector="cameraButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="hzC-jM-Qhh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-9t-VBu">
+                                <state key="normal" title="Mode: Video"/>
+                                <connections>
+                                    <action selector="cameraModeButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="DhC-MQ-SXe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aWQ-fE-OLK" firstAttribute="top" secondItem="Sc8-de-NFt" secondAttribute="bottom" constant="8" id="5M1-lM-GiQ"/>
+                            <constraint firstItem="cwU-9t-VBu" firstAttribute="baseline" secondItem="RcL-iZ-5u2" secondAttribute="baseline" id="EpJ-m5-oxB"/>
+                            <constraint firstItem="RcL-iZ-5u2" firstAttribute="baseline" secondItem="aWQ-fE-OLK" secondAttribute="baseline" id="TIE-2Q-0GL"/>
+                            <constraint firstItem="RcL-iZ-5u2" firstAttribute="centerX" secondItem="c5n-ka-HCc" secondAttribute="centerX" id="XhX-d4-nqz"/>
+                            <constraint firstItem="aWQ-fE-OLK" firstAttribute="leading" secondItem="c5n-ka-HCc" secondAttribute="leadingMargin" id="cCT-eF-W5t"/>
+                            <constraint firstItem="cwU-9t-VBu" firstAttribute="trailing" secondItem="c5n-ka-HCc" secondAttribute="trailingMargin" id="rQY-Vw-2To"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Hmy-nS-9D5"/>
+                    <connections>
+                        <outlet property="cameraButton" destination="RcL-iZ-5u2" id="taa-jJ-uFe"/>
+                        <outlet property="captureButton" destination="93K-YD-NS9" id="sEC-CG-xAn"/>
+                        <outlet property="flashButton" destination="aWQ-fE-OLK" id="5LK-e8-lej"/>
+                        <outlet property="modeButton" destination="cwU-9t-VBu" id="rXp-UU-Z9N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SnD-Hl-V7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-754" y="-194"/>
+        </scene>
+    </scenes>
+</document>
