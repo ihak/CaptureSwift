@@ -459,7 +459,8 @@ public extension CameraEngine {
 public extension CameraEngine {
     
     public func capturePhoto(_ blockCompletion: @escaping blockCompletionCapturePhoto) {
-        self.cameraOutput.capturePhoto(settings: self.capturePhotoSettings, blockCompletion)
+        let uniqueSettings = AVCapturePhotoSettings.init(from: self.capturePhotoSettings)
+        self.cameraOutput.capturePhoto(settings: uniqueSettings, blockCompletion)
     }
 	
 	public func capturePhotoBuffer(_ blockCompletion: @escaping blockCompletionCapturePhotoBuffer) {

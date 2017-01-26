@@ -130,7 +130,7 @@ extension CaptureFileManager {
     
     public class func getImage(file: String) -> UIImage? {
         if let path = temporaryPath(file) {
-            return UIImage.init(contentsOfFile: path.absoluteString)
+            return UIImage.init(contentsOfFile: path.path)
         }
         return nil
     }

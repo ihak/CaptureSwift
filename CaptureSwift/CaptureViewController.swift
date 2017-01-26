@@ -18,19 +18,25 @@ class CaptureViewController: UIViewController {
     @IBOutlet var flashButton: UIButton!
     @IBOutlet var cameraButton: UIButton!
     @IBOutlet var modeButton: UIButton!
+    @IBOutlet var captureStackView: CaptureStackView!
     
     @IBOutlet var captureButton: UIButton!
     
     let cameraEngine = CameraEngine()
     var mode: CameraMode = .photo
-    var photosLimit = 10
+    var photosLimit = 2
     var videoLimit = 10
+    
+    var backFlashMode: AVCaptureFlashMode = .auto
     
     //MARK: - Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.cameraEngine.startSession()
+        
+        // Set the flash mode to a default value of .auto
+        setFlashMode(flashMode: backFlashMode)
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,6 +44,8 @@ class CaptureViewController: UIViewController {
             layer.frame = self.view.bounds
             self.view.layer.insertSublayer(layer, at: 0)
             self.view.layer.masksToBounds = true
+            
+            self.cameraEngine.rotationCamera = true
         }
     }
 
@@ -62,38 +70,27 @@ class CaptureViewController: UIViewController {
         if let flashMode = self.cameraEngine.flashMode {
             switch flashMode {
                 case .on:
-                    self.cameraEngine.flashMode = .off
-                    flashButton.setTitle("Flash: Off", for: .normal)
+                    setFlashMode(flashMode: .off)
                 case .off:
-                    self.cameraEngine.flashMode = .auto
-                    flashButton.setTitle("Flash: Auto", for: .normal)
+                    setFlashMode(flashMode: .auto)
                 case .auto:
-                    self.cameraEngine.flashMode = .on
-                    flashButton.setTitle("Flash: On", for: .normal)
+                    setFlashMode(flashMode: .on)
             }
         }
     }
 
     @IBAction func cameraButtonTapped(_ sender: AnyObject) {
-        self.cameraEngine.switchCurrentDevice()
-        switch self.cameraEngine.cameraDevice.currentPosition {
-        case .front:
-            self.cameraButton.setTitle("Camera: Front", for: .normal)
-        case .back:
-            self.cameraButton.setTitle("Camera: Back", for: .normal)
-        case .unspecified:
-            self.cameraButton.setTitle("Camera: Nil", for: .normal)
-        }
+        switchCaptureDevice()
     }
 
     @IBAction func cameraModeButtonTapped(_ sender: AnyObject) {
         switch mode {
         case .photo:
-            mode = .photo
-            modeButton.setTitle("Mode: Photo", for: .normal)
-        case .video:
-            mode = .video
+            setCameraMode(mode: .video)
             modeButton.setTitle("Mode: Video", for: .normal)
+        case .video:
+            setCameraMode(mode: .photo)
+            modeButton.setTitle("Mode: Photo", for: .normal)
         }
     }
     
@@ -107,13 +104,74 @@ class CaptureViewController: UIViewController {
     }
 
     //MARK: - Other Functions
-
-    func capturePhoto() {
+    
+    func switchCaptureDevice() {
+        // Set the flash mode to off when device is switched
+        if self.cameraEngine.cameraDevice.currentPosition == .back {
+            self.cameraEngine.flashMode = .off
+            self.flashButton.isHidden = true
+        }
+        else {
+            setFlashMode(flashMode: backFlashMode)
+            self.flashButton.isHidden = false
+        }
         
+        self.cameraEngine.switchCurrentDevice()
+        
+        switch self.cameraEngine.cameraDevice.currentPosition {
+            case .front:
+                self.cameraButton.setTitle("Camera: Front", for: .normal)
+            case .back:
+                self.cameraButton.setTitle("Camera: Back", for: .normal)
+            case .unspecified:
+                self.cameraButton.setTitle("Camera: Nil", for: .normal)
+        }
+    }
+
+    func setCameraMode(mode: CameraMode) {
+        self.mode = mode
+    }
+    
+    func setFlashMode(flashMode: AVCaptureFlashMode) {
+        // Set flash mode only for back camera
+        guard self.cameraEngine.cameraDevice.currentPosition == .back else {
+            return
+        }
+        
+        self.cameraEngine.flashMode = flashMode
+        self.backFlashMode = flashMode
+        
+        switch flashMode {
+        case .on:
+            flashButton.setTitle("Flash: On", for: .normal)
+        case .off:
+            flashButton.setTitle("Flash: Off", for: .normal)
+        case .auto:
+            flashButton.setTitle("Flash: Auto", for: .normal)
+        }
+    }
+    
+    func capturePhoto() {
+        self.cameraEngine.capturePhoto { (image, error) -> (Void) in
+            if let _ = error {
+                print("Unable to capture image. " + error!.localizedDescription)
+            }
+            else {
+                if let photo = image {
+                    print(photo.description)
+                    
+                    self.captureStackView.captureStack.push(image: photo)
+                    
+                    if self.captureStackView.captureStack.list.count == self.photosLimit {
+                        self.captureButton.isEnabled = false
+                        self.captureButton.alpha = 0.5
+                    }
+                }
+            }
+        }
     }
     
     func captureVideo() {
         
     }
-
 }

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dbi-J4-L4N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Dbi-J4-L4N">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93K-YD-NS9">
-                                <frame key="frameInset" minX="160" minY="617" width="55" height="30"/>
+                                <rect key="frame" x="160" y="617" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Capture"/>
                                 <connections>
@@ -44,31 +47,56 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWQ-fE-OLK">
+                                <rect key="frame" x="16" y="72" width="65" height="30"/>
                                 <state key="normal" title="Flash: On"/>
                                 <connections>
                                     <action selector="flashButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="P6l-8s-esZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcL-iZ-5u2">
-                                <state key="normal" title="Camera: Front"/>
+                                <rect key="frame" x="140" y="72" width="96" height="30"/>
+                                <state key="normal" title="Camera: Back"/>
                                 <connections>
                                     <action selector="cameraButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="hzC-jM-Qhh"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cwU-9t-VBu">
+                                <rect key="frame" x="272" y="72" width="87" height="30"/>
                                 <state key="normal" title="Mode: Video"/>
                                 <connections>
                                     <action selector="cameraModeButtonTapped:" destination="skY-Mm-hXM" eventType="touchUpInside" id="DhC-MQ-SXe"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWC-LZ-4Qg" customClass="CaptureStackView" customModule="CaptureSwift" customModuleProvider="target">
+                                <rect key="frame" x="16" y="597" width="50" height="50"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pDe-TG-ThG">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4Ww-ts-HPu"/>
+                                    <constraint firstAttribute="bottom" secondItem="pDe-TG-ThG" secondAttribute="bottom" id="P9N-10-7gZ"/>
+                                    <constraint firstItem="pDe-TG-ThG" firstAttribute="top" secondItem="RWC-LZ-4Qg" secondAttribute="top" id="TF8-bm-3PQ"/>
+                                    <constraint firstAttribute="width" constant="50" id="a7Y-bx-qW5"/>
+                                    <constraint firstItem="pDe-TG-ThG" firstAttribute="leading" secondItem="RWC-LZ-4Qg" secondAttribute="leading" id="oso-hm-h9u"/>
+                                    <constraint firstAttribute="trailing" secondItem="pDe-TG-ThG" secondAttribute="trailing" id="sSA-bq-FKe"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="pDe-TG-ThG" id="izq-ag-qhD"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aWQ-fE-OLK" firstAttribute="top" secondItem="Sc8-de-NFt" secondAttribute="bottom" constant="8" id="5M1-lM-GiQ"/>
+                            <constraint firstItem="RWC-LZ-4Qg" firstAttribute="leading" secondItem="c5n-ka-HCc" secondAttribute="leadingMargin" id="BHg-Cg-FdP"/>
                             <constraint firstItem="cwU-9t-VBu" firstAttribute="baseline" secondItem="RcL-iZ-5u2" secondAttribute="baseline" id="EpJ-m5-oxB"/>
                             <constraint firstItem="RcL-iZ-5u2" firstAttribute="baseline" secondItem="aWQ-fE-OLK" secondAttribute="baseline" id="TIE-2Q-0GL"/>
                             <constraint firstItem="RcL-iZ-5u2" firstAttribute="centerX" secondItem="c5n-ka-HCc" secondAttribute="centerX" id="XhX-d4-nqz"/>
                             <constraint firstItem="aWQ-fE-OLK" firstAttribute="leading" secondItem="c5n-ka-HCc" secondAttribute="leadingMargin" id="cCT-eF-W5t"/>
+                            <constraint firstItem="dQM-RT-s93" firstAttribute="top" secondItem="RWC-LZ-4Qg" secondAttribute="bottom" constant="20" id="k9V-cB-cFH"/>
                             <constraint firstItem="cwU-9t-VBu" firstAttribute="trailing" secondItem="c5n-ka-HCc" secondAttribute="trailingMargin" id="rQY-Vw-2To"/>
                         </constraints>
                     </view>
@@ -76,13 +104,14 @@
                     <connections>
                         <outlet property="cameraButton" destination="RcL-iZ-5u2" id="taa-jJ-uFe"/>
                         <outlet property="captureButton" destination="93K-YD-NS9" id="sEC-CG-xAn"/>
+                        <outlet property="captureStackView" destination="RWC-LZ-4Qg" id="IbM-eH-dxW"/>
                         <outlet property="flashButton" destination="aWQ-fE-OLK" id="5LK-e8-lej"/>
                         <outlet property="modeButton" destination="cwU-9t-VBu" id="rXp-UU-Z9N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnD-Hl-V7A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-754" y="-194"/>
+            <point key="canvasLocation" x="-754.39999999999998" y="-194.75262368815595"/>
         </scene>
     </scenes>
 </document>

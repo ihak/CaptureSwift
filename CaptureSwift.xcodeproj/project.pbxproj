@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F075EEE1E39040000F23C5A /* CaptureImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F075EED1E39040000F23C5A /* CaptureImageItem.swift */; };
+		2F075EF01E39163200F23C5A /* CaptureStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F075EEF1E39163200F23C5A /* CaptureStackView.swift */; };
 		2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A74E1E2A2879006CACF2 /* AppDelegate.swift */; };
 		2FE4A7511E2A2879006CACF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7501E2A2879006CACF2 /* ViewController.swift */; };
 		2FE4A7541E2A2879006CACF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A7521E2A2879006CACF2 /* Main.storyboard */; };
@@ -35,6 +37,7 @@
 		2FE4A79D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift */; };
 		2FE4A79E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */; };
 		2FE4A79F1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */; };
+		2FFECA0E1E37D80C00156CCC /* CaptureStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFECA0D1E37D80C00156CCC /* CaptureStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2F075EED1E39040000F23C5A /* CaptureImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureImageItem.swift; sourceTree = "<group>"; };
+		2F075EEF1E39163200F23C5A /* CaptureStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureStackView.swift; sourceTree = "<group>"; };
 		2FE4A74B1E2A2879006CACF2 /* CaptureSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptureSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE4A74E1E2A2879006CACF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FE4A7501E2A2879006CACF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 		2FE4A78C1E2B6372006CACF2 /* CameraEngineGifEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineGifEncoder.swift; sourceTree = "<group>"; };
 		2FE4A78D1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineMetadataOutput.swift; sourceTree = "<group>"; };
 		2FE4A78E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraEngineVideoEncoder.swift; sourceTree = "<group>"; };
+		2FFECA0D1E37D80C00156CCC /* CaptureStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,9 @@
 				2FE4A77C1E2A57BE006CACF2 /* CaptureFileManager.swift */,
 				2FE4A7801E2B5BB2006CACF2 /* CaptureViewController.swift */,
 				2FE4A7831E2B5C0E006CACF2 /* Capture.storyboard */,
+				2FFECA0D1E37D80C00156CCC /* CaptureStack.swift */,
+				2F075EED1E39040000F23C5A /* CaptureImageItem.swift */,
+				2F075EEF1E39163200F23C5A /* CaptureStackView.swift */,
 			);
 			name = CaptureFramework;
 			sourceTree = "<group>";
@@ -254,6 +263,7 @@
 				TargetAttributes = {
 					2FE4A74A1E2A2879006CACF2 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 2R66XDN32F;
 						ProvisioningStyle = Automatic;
 					};
 					2FE4A75E1E2A2879006CACF2 = {
@@ -322,12 +332,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F075EF01E39163200F23C5A /* CaptureStackView.swift in Sources */,
+				2FFECA0E1E37D80C00156CCC /* CaptureStack.swift in Sources */,
 				2FE4A7941E2B6372006CACF2 /* CameraEngineDevice.swift in Sources */,
 				2FE4A77D1E2A57BE006CACF2 /* CaptureFileManager.swift in Sources */,
 				2FE4A7811E2B5BB2006CACF2 /* CaptureViewController.swift in Sources */,
 				2FE4A7921E2B6372006CACF2 /* CameraEngineCaptureOutput.swift in Sources */,
 				2FE4A7901E2B6372006CACF2 /* CameraEngine.swift in Sources */,
 				2FE4A7511E2A2879006CACF2 /* ViewController.swift in Sources */,
+				2F075EEE1E39040000F23C5A /* CaptureImageItem.swift in Sources */,
 				2FE4A79C1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */,
 				2FE4A7981E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */,
 				2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */,
@@ -494,6 +507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2R66XDN32F;
 				INFOPLIST_FILE = CaptureSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihak.CaptureSwift;
@@ -506,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2R66XDN32F;
 				INFOPLIST_FILE = CaptureSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihak.CaptureSwift;
@@ -587,6 +602,7 @@
 				2FE4A7751E2A2879006CACF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FE4A7761E2A2879006CACF2 /* Build configuration list for PBXNativeTarget "CaptureSwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -595,6 +611,7 @@
 				2FE4A7781E2A2879006CACF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2FE4A7791E2A2879006CACF2 /* Build configuration list for PBXNativeTarget "CaptureSwiftUITests" */ = {
 			isa = XCConfigurationList;
@@ -603,6 +620,7 @@
 				2FE4A77B1E2A2879006CACF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
