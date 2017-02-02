@@ -20,12 +20,22 @@ class CaptureViewController: UIViewController {
     @IBOutlet var modeButton: UIButton!
     @IBOutlet var captureStackView: CaptureStackView!
     
+    @IBOutlet var cameraButtonContainerView: UIView!
+    @IBOutlet var cameraButtonView: UIView!
+    @IBOutlet var camerButtonImageView: UIImageView!
+    
+    @IBOutlet var countLabelContainer: UIView!
+    @IBOutlet var countLabel: UILabel!
+    
     @IBOutlet var captureButton: UIButton!
     
+    let kFillAnimation = "kFillAnimation"
     let cameraEngine = CameraEngine()
     var mode: CameraMode = .photo
-    var photosLimit = 2
-    var videoLimit = 10
+    var photosLimit = 5
+    var videoLimit = 5.0
+    
+    var videoProgressStrokeLayer: CAShapeLayer?
     
     var backFlashMode: AVCaptureFlashMode = .auto
     
@@ -37,6 +47,19 @@ class CaptureViewController: UIViewController {
         
         // Set the flash mode to a default value of .auto
         setFlashMode(flashMode: backFlashMode)
+        
+        cameraButtonView.layer.cornerRadius = 30.0
+        cameraButtonView.layer.borderWidth = 1.0
+        cameraButtonView.layer.borderColor = UIColor(colorLiteralRed: 184.0/256.0, green: 184.0/256.0, blue: 184.0/256.0, alpha: 1.0).cgColor
+        
+        cameraButtonContainerView.layer.cornerRadius = 35.0
+        
+        captureStackView.layer.cornerRadius = 5.0
+        countLabelContainer.layer.cornerRadius = 5.0
+        
+        countLabel.text = "0 /\(photosLimit)"
+        
+        self.navigationItem.title = "Take Photo"
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,17 +77,6 @@ class CaptureViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
     //MARK: - IBActions
     @IBAction func flashButtonTapped(_ sender: AnyObject) {
         if let flashMode = self.cameraEngine.flashMode {
@@ -104,6 +116,17 @@ class CaptureViewController: UIViewController {
     }
 
     //MARK: - Other Functions
+    func hideControls() {
+        self.flashButton.isHidden = true
+        self.cameraButton.isHidden = true
+        self.modeButton.isHidden = true
+    }
+    
+    func showControls() {
+        self.flashButton.isHidden = false
+        self.cameraButton.isHidden = false
+        self.modeButton.isHidden = false
+    }
     
     func switchCaptureDevice() {
         // Set the flash mode to off when device is switched
@@ -151,6 +174,44 @@ class CaptureViewController: UIViewController {
         }
     }
     
+    func startVideoProgressAnimation() {
+        let rect = self.view.convert(self.cameraButtonContainerView.bounds, from: nil)
+            
+        let startAngle = M_PI * 1.5
+        let endAngle = startAngle + (M_PI * 2)
+        
+        videoProgressStrokeLayer = CAShapeLayer()
+        videoProgressStrokeLayer?.fillColor   = UIColor.clear.cgColor
+        videoProgressStrokeLayer?.strokeColor = UIColor(colorLiteralRed: 18.0/256.0, green: 76.0/256.0, blue: 155.0/256.0, alpha: 1.0).cgColor
+        videoProgressStrokeLayer?.lineWidth   = 4
+        videoProgressStrokeLayer?.borderColor = UIColor.clear.cgColor
+        
+        let innerbezierPath = UIBezierPath()
+        innerbezierPath.addArc(withCenter: CGPoint(x: rect.size.width/2, y: rect.size.height / 2), radius: rect.size.width/2, startAngle: CGFloat(startAngle), endAngle: CGFloat((endAngle - startAngle) * 1 + startAngle), clockwise: true)
+        videoProgressStrokeLayer?.path = innerbezierPath.cgPath
+        
+        self.cameraButtonContainerView.layer.addSublayer(videoProgressStrokeLayer!)
+        
+        let fillStrokeAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
+        
+        
+        fillStrokeAnimation.duration = videoLimit
+        fillStrokeAnimation.fromValue = NSNumber(floatLiteral: 0.0)
+        fillStrokeAnimation.toValue = NSNumber(floatLiteral: 1.0)
+        fillStrokeAnimation.isRemovedOnCompletion = false
+        fillStrokeAnimation.fillMode = kCAFillModeForwards
+        fillStrokeAnimation.delegate = self
+        
+        
+        videoProgressStrokeLayer?.add(fillStrokeAnimation, forKey: kFillAnimation)
+    }
+    
+    func resetVideoProgress() {
+        DispatchQueue.main.async {
+            self.videoProgressStrokeLayer?.removeFromSuperlayer()
+        }
+    }
+    
     func capturePhoto() {
         self.cameraEngine.capturePhoto { (image, error) -> (Void) in
             if let _ = error {
@@ -162,9 +223,13 @@ class CaptureViewController: UIViewController {
                     
                     self.captureStackView.captureStack.push(image: photo)
                     
-                    if self.captureStackView.captureStack.list.count == self.photosLimit {
-                        self.captureButton.isEnabled = false
-                        self.captureButton.alpha = 0.5
+                    DispatchQueue.main.async {
+                        if self.captureStackView.captureStack.list.count == self.photosLimit {
+                            self.captureButton.isEnabled = false
+                            self.captureButton.alpha = 0.5
+                        }
+                        
+                        self.countLabel.text = "\(self.captureStackView.captureStack.list.count) /\(self.photosLimit)"
                     }
                 }
             }
@@ -172,6 +237,37 @@ class CaptureViewController: UIViewController {
     }
     
     func captureVideo() {
-        
+        startVideoProgressAnimation()
+        if let url = CaptureFileManager.temporaryPath("video.mp4") {
+            self.cameraEngine.startRecordingVideo(url, blockCompletion: { (url, error) -> (Void) in
+                self.resetVideoProgress()
+                
+                if error != nil {
+                    print("Error: \(error!.localizedDescription)")
+                    return
+                }
+                
+                print("Video saved at : \(url?.absoluteURL)")
+                if let videoURL = url {
+                    self.captureStackView.captureStack.push(url: videoURL)
+                    
+                    DispatchQueue.main.async {
+                        self.countLabel.text = "\(self.captureStackView.captureStack.list.count) /\(self.photosLimit)"
+                    }
+                }
+            })
+        }
+    }
+    
+    func stopVideoRecording() {
+        self.cameraEngine.stopRecordingVideo()
+    }
+}
+
+extension CaptureViewController: CAAnimationDelegate {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if flag {
+            self.stopVideoRecording()
+        }
     }
 }

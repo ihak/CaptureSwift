@@ -134,4 +134,21 @@ extension CaptureFileManager {
         }
         return nil
     }
+    
+    public class func rename(at srcPath: URL, to name: String) -> URL? {
+        var url: URL?
+        
+        if let path = temporaryPath(name) {
+            url = path
+            
+            do {
+                try FileManager.default.moveItem(at: srcPath, to: path)
+                print("Video moved to: \(path.absoluteString)")
+            } catch  {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return url
+    }
 }

@@ -10,43 +10,41 @@ import Foundation
 import UIKit
 import ImageIO
 
-class CaptureImageItem {
-    var imageName: String
-    
-    var thumbnailName: String {
-        return self.imageName + "-thumb"
-    }
-    
-    var imageThumbnail: UIImage
-    
+class CaptureImageItem: CaptureItem {
+        
     var image: UIImage? {
         get {
             return self.readImage()
         }
     }
     
-    init() {
-        imageName = ""
-        imageThumbnail = UIImage()
+    override init() {
+    }
+    
+    convenience init(image: UIImage) {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "yyyy-MM-dd hh:mm:ss.png"
+        let name = dateformat.string(from: Date())
+        
+        self.init(name: name, image: image)
     }
     
     convenience init(name: String, image: UIImage) {
         self.init()
-        self.imageName = name
+        self.name = name
         self.saveImage(image: image)
         
         if let thumbnail = self.getThumbnail(image: image) {
-            self.imageThumbnail = thumbnail
-            self.saveThumbnail()
+            self.thumbnailImage = thumbnail
         }
     }
     
     convenience init(name: String) {
         self.init()
-        self.imageName = name
+        self.name = name
         
         if let thumbnail = self.readThumbnail() {
-            self.imageThumbnail = thumbnail
+            self.thumbnailImage = thumbnail
         }
     }
     
@@ -55,11 +53,7 @@ class CaptureImageItem {
     }
     
     private func saveImage(image: UIImage) {
-        let _ = CaptureFileManager.save(image: image, withName: imageName)
-    }
-    
-    private func saveThumbnail() {
-        let _ = CaptureFileManager.save(image: imageThumbnail, withName: thumbnailName)
+        let _ = CaptureFileManager.save(image: image, withName: name)
     }
     
     private func readThumbnail() -> UIImage? {
@@ -67,7 +61,7 @@ class CaptureImageItem {
     }
     
     private func readImage() -> UIImage? {
-        return CaptureFileManager.getImage(file: imageName)
+        return CaptureFileManager.getImage(file: name)
     }
     
     private func getThumbnail(image: UIImage) -> UIImage? {

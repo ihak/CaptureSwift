@@ -24,7 +24,9 @@ class CaptureStackView: UIView, CaptureStackDelegate {
     //MARK: - Other Functions
     
     //MARK: - CaptureStackDelegate
-    func didAddItem(item: CaptureImageItem) {
-        self.imageView.image = item.imageThumbnail
+    func didAddItem(item: CaptureItem) {
+        DispatchQueue.main.async {
+            self.imageView.image = item.thumbnailImage
+        }
     }
 }

@@ -17,26 +17,27 @@ class CaptureStack {
     // 5. will contain the objects of CaptureImageItem
     // 
     
-    var list = [CaptureImageItem]()
+    var list = [CaptureItem]()
     var delegate: CaptureStackDelegate?
     
     init() {
     }
     
     func push(image: UIImage) {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        let name = dateformat.string(from: Date())
-        
-        list.insert(CaptureImageItem(name: name, image: image), at: 0)
+        list.insert(CaptureImageItem(image: image), at: 0)
         delegate?.didAddItem(item: list.first!)
     }
     
-    func pop() -> CaptureImageItem {
+    func push(url: URL) {
+        list.insert(CaptureVideoItem(url: url), at: 0)
+        delegate?.didAddItem(item: list.first!)
+    }
+    
+    func pop() -> CaptureItem {
         return list.remove(at: 0)
     }
 }
 
 protocol CaptureStackDelegate {
-    func didAddItem(item: CaptureImageItem)
+    func didAddItem(item: CaptureItem)
 }

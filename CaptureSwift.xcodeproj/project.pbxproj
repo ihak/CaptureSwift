@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F075EEE1E39040000F23C5A /* CaptureImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F075EED1E39040000F23C5A /* CaptureImageItem.swift */; };
 		2F075EF01E39163200F23C5A /* CaptureStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F075EEF1E39163200F23C5A /* CaptureStackView.swift */; };
+		2FDA87851E40F713001C6E05 /* CaptureVideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA87841E40F713001C6E05 /* CaptureVideoItem.swift */; };
+		2FDA87871E40FB3C001C6E05 /* CaptureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA87861E40FB3C001C6E05 /* CaptureItem.swift */; };
 		2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A74E1E2A2879006CACF2 /* AppDelegate.swift */; };
 		2FE4A7511E2A2879006CACF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A7501E2A2879006CACF2 /* ViewController.swift */; };
 		2FE4A7541E2A2879006CACF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A7521E2A2879006CACF2 /* Main.storyboard */; };
@@ -60,6 +62,8 @@
 /* Begin PBXFileReference section */
 		2F075EED1E39040000F23C5A /* CaptureImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureImageItem.swift; sourceTree = "<group>"; };
 		2F075EEF1E39163200F23C5A /* CaptureStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureStackView.swift; sourceTree = "<group>"; };
+		2FDA87841E40F713001C6E05 /* CaptureVideoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureVideoItem.swift; sourceTree = "<group>"; };
+		2FDA87861E40FB3C001C6E05 /* CaptureItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureItem.swift; sourceTree = "<group>"; };
 		2FE4A74B1E2A2879006CACF2 /* CaptureSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptureSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE4A74E1E2A2879006CACF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FE4A7501E2A2879006CACF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,8 @@
 				2FFECA0D1E37D80C00156CCC /* CaptureStack.swift */,
 				2F075EED1E39040000F23C5A /* CaptureImageItem.swift */,
 				2F075EEF1E39163200F23C5A /* CaptureStackView.swift */,
+				2FDA87841E40F713001C6E05 /* CaptureVideoItem.swift */,
+				2FDA87861E40FB3C001C6E05 /* CaptureItem.swift */,
 			);
 			name = CaptureFramework;
 			sourceTree = "<group>";
@@ -258,7 +264,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Hassan Ahmed Khan";
 				TargetAttributes = {
 					2FE4A74A1E2A2879006CACF2 = {
@@ -335,6 +341,7 @@
 				2F075EF01E39163200F23C5A /* CaptureStackView.swift in Sources */,
 				2FFECA0E1E37D80C00156CCC /* CaptureStack.swift in Sources */,
 				2FE4A7941E2B6372006CACF2 /* CameraEngineDevice.swift in Sources */,
+				2FDA87871E40FB3C001C6E05 /* CaptureItem.swift in Sources */,
 				2FE4A77D1E2A57BE006CACF2 /* CaptureFileManager.swift in Sources */,
 				2FE4A7811E2B5BB2006CACF2 /* CaptureViewController.swift in Sources */,
 				2FE4A7921E2B6372006CACF2 /* CameraEngineCaptureOutput.swift in Sources */,
@@ -343,6 +350,7 @@
 				2F075EEE1E39040000F23C5A /* CaptureImageItem.swift in Sources */,
 				2FE4A79C1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */,
 				2FE4A7981E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */,
+				2FDA87851E40F713001C6E05 /* CaptureVideoItem.swift in Sources */,
 				2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */,
 				2FE4A79A1E2B6372006CACF2 /* CameraEngineGifEncoder.swift in Sources */,
 				2FE4A7961E2B6372006CACF2 /* CameraEngineDeviceInput.swift in Sources */,
@@ -428,6 +436,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -478,6 +487,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
