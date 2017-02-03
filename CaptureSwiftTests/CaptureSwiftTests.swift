@@ -56,6 +56,7 @@ class CaptureSwiftTests: XCTestCase {
     }
     
     func testTempDirectoryContents() {
+        print(CaptureFileManager.listFilesInTempDirectory())
         XCTAssertGreaterThan(CaptureFileManager.listFilesInTempDirectory().count, 0)
     }
     

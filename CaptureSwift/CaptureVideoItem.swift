@@ -11,7 +11,7 @@ import UIKit
 import AVFoundation
 
 class CaptureVideoItem: CaptureItem {
-    var url: URL?
+    var url: URL!
     
     init(url: URL) {
         let dateformat = DateFormatter()
@@ -20,15 +20,14 @@ class CaptureVideoItem: CaptureItem {
 
         super.init()
         self.name = name + ".mp4"
+        self.url = url
         
-        // Rename video by moving it to a different path from default path
-        if let path = CaptureFileManager.rename(at: url, to: self.name) {
-            self.url = path
-            
-            if let thumb = self.generateThumbnail(url: path) {
-                thumbnailImage = thumb
-            }
+        if let thumb = self.generateThumbnail(url: self.url) {
+            thumbnailImage = thumb
         }
+        
+        let _ = CaptureFileManager.sizeOf(itemAtPath: self.url)
+
     }
     
     func generateThumbnail(url: URL) -> UIImage? {

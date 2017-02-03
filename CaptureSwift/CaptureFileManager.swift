@@ -105,6 +105,22 @@ class CaptureFileManager: NSObject {
             }
         }
     }
+    
+    public class func sizeOf(itemAtPath path: URL) -> UInt64 {
+        var fileSize = UInt64(0)
+        do {
+            let attr = try FileManager.default.attributesOfItem(atPath: path.path)
+            fileSize = attr[FileAttributeKey.size] as! UInt64
+            
+            let sizeMB = fileSize/1024/1024
+            
+            print("Name: \(path.lastPathComponent): Size: \(sizeMB) MB")
+        } catch {
+            print("Error: \(error)")
+        }
+        
+        return fileSize
+    }
 }
 
 extension CaptureFileManager {

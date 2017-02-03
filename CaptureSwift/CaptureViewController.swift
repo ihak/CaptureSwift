@@ -238,7 +238,13 @@ class CaptureViewController: UIViewController {
     
     func captureVideo() {
         startVideoProgressAnimation()
-        if let url = CaptureFileManager.temporaryPath("video.mp4") {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "yyyy-MM-dd-hh:mm:ss"
+        
+        var name = dateformat.string(from: Date())
+        name = name + ".mp4"
+
+        if let url = CaptureFileManager.temporaryPath(name) {
             self.cameraEngine.startRecordingVideo(url, blockCompletion: { (url, error) -> (Void) in
                 self.resetVideoProgress()
                 

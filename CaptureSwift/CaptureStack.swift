@@ -10,12 +10,6 @@ import Foundation
 import UIKit
 
 class CaptureStack {
-    // 1. Add an image to the stack
-    // 2. Save the added image on the file and save the thumbnail in the stack
-    // 3. return list of thumbnails
-    // 4. return full image
-    // 5. will contain the objects of CaptureImageItem
-    // 
     
     var list = [CaptureItem]()
     var delegate: CaptureStackDelegate?
