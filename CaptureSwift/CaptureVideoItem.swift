@@ -38,9 +38,7 @@ class CaptureVideoItem: CaptureItem {
         imgGenerator.appliesPreferredTrackTransform = true
         
         if let cgImage = try? imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil) {
-            // !! check the error before proceeding
             image = UIImage(cgImage: cgImage)
-            // lay out this image view, or if it already exists, set its image property to uiImage
         }
         return image
     }

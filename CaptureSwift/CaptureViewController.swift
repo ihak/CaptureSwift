@@ -177,8 +177,8 @@ class CaptureViewController: UIViewController {
     func startVideoProgressAnimation() {
         let rect = self.view.convert(self.cameraButtonContainerView.bounds, from: nil)
             
-        let startAngle = M_PI * 1.5
-        let endAngle = startAngle + (M_PI * 2)
+        let startAngle = Double.pi * 1.5
+        let endAngle = startAngle + (Double.pi * 2)
         
         videoProgressStrokeLayer = CAShapeLayer()
         videoProgressStrokeLayer?.fillColor   = UIColor.clear.cgColor
@@ -253,7 +253,7 @@ class CaptureViewController: UIViewController {
                     return
                 }
                 
-                print("Video saved at : \(url?.absoluteURL)")
+                print("Video saved at : \(String(describing: url?.absoluteURL))")
                 if let videoURL = url {
                     self.captureStackView.captureStack.push(url: videoURL)
                     
