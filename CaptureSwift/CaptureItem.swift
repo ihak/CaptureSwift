@@ -14,7 +14,7 @@ class CaptureItem {
     var name: String
 
     var thumbnailName: String {
-        return self.name + "-thumb.png"
+        return self.name + "-thumb"
     }
 
     init() {

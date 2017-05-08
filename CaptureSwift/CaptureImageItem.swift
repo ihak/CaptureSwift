@@ -21,14 +21,13 @@ class CaptureImageItem: CaptureItem {
     override init() {
     }
     
-    convenience init(image: UIImage) {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = "yyyy-MM-dd hh:mm:ss.png"
-        let name = dateformat.string(from: Date())
-        
-        self.init(name: name, image: image)
+    convenience init(image: UIImage) {        
+        self.init(name: CaptureFileManager.imageName(), image: image)
     }
     
+    /**
+     This method takes name and image and save the image with the given name.
+     */
     convenience init(name: String, image: UIImage) {
         self.init()
         self.name = name
@@ -36,9 +35,13 @@ class CaptureImageItem: CaptureItem {
         
         if let thumbnail = self.getThumbnail(image: image) {
             self.thumbnailImage = thumbnail
+            self.saveThumbnail()
         }
     }
     
+    /**
+     This method takes image name and allows user to read the image from the temporary directory with the given name.
+     */
     convenience init(name: String) {
         self.init()
         self.name = name
@@ -46,10 +49,12 @@ class CaptureImageItem: CaptureItem {
         if let thumbnail = self.readThumbnail() {
             self.thumbnailImage = thumbnail
         }
-    }
-    
-    func save() {
-        self.saveThumbnail()
+        else if let image = self.image {
+            if let thumbnail = self.getThumbnail(image: image) {
+                self.thumbnailImage = thumbnail
+                self.saveThumbnail()
+            }
+        }
     }
     
     private func saveImage(image: UIImage) {

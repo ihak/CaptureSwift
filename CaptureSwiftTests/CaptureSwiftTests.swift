@@ -23,7 +23,7 @@ class CaptureSwiftTests: XCTestCase {
     
     func testCFMDocumentPath() {
         let path = CaptureFileManager.documentPath()
-        print("Path: \(path)")
+        print("Path: \(String(describing: path))")
         XCTAssertNotNil(path)
     }
     
@@ -36,14 +36,14 @@ class CaptureSwiftTests: XCTestCase {
     func testCFMDocumentPathForFile() {
         let fileName = "abc.png"
         let path = CaptureFileManager.documentPath(fileName)
-        print("Path: \(path)")
+        print("Path: \(String(describing: path))")
         XCTAssertNotNil(path)
     }
     
     func testCFMTemporaryPathForFile() {
         let fileName = "abc.png"
         let path = CaptureFileManager.temporaryPath(fileName)
-        print("Path: \(path)")
+        print("Path: \(String(describing: path))")
         XCTAssertNotNil(path)
     }
     
@@ -56,7 +56,6 @@ class CaptureSwiftTests: XCTestCase {
     }
     
     func testTempDirectoryContents() {
-        print(CaptureFileManager.listFilesInTempDirectory())
         XCTAssertGreaterThan(CaptureFileManager.listFilesInTempDirectory().count, 0)
     }
     

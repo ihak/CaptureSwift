@@ -60,6 +60,8 @@ class CaptureViewController: UIViewController {
         countLabel.text = "0 /\(photosLimit)"
         
         self.navigationItem.title = "Take Photo"
+        
+        captureStackView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -75,6 +77,14 @@ class CaptureViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SegueShowCaptureItemCollectionView" {
+            if let destinationVC = segue.destination as? CaptureItemsViewController {
+                destinationVC.captureStack = self.captureStackView.captureStack
+            }
+        }
     }
     
     //MARK: - IBActions
@@ -238,13 +248,9 @@ class CaptureViewController: UIViewController {
     
     func captureVideo() {
         startVideoProgressAnimation()
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = "yyyy-MM-dd-hh:mm:ss"
-        
-        var name = dateformat.string(from: Date())
-        name = name + ".mp4"
+        let captureVideoItem = CaptureVideoItem()
 
-        if let url = CaptureFileManager.temporaryPath(name) {
+        if let url = captureVideoItem.url {
             self.cameraEngine.startRecordingVideo(url, blockCompletion: { (url, error) -> (Void) in
                 self.resetVideoProgress()
                 
@@ -275,5 +281,12 @@ extension CaptureViewController: CAAnimationDelegate {
         if flag {
             self.stopVideoRecording()
         }
+    }
+}
+
+
+extension CaptureViewController: CaptureStackViewDelegate {
+    func captureStackViewDidTap(captureStackView: CaptureStackView) {
+        self.performSegue(withIdentifier: "SegueShowCaptureItemCollectionView", sender: nil)
     }
 }

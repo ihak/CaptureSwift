@@ -89,7 +89,13 @@ class CaptureFileManager: NSObject {
     public class func listFilesInTempDirectory() -> [String] {
         let fileManager = FileManager.default
         if let list = try? fileManager.contentsOfDirectory(atPath: temporaryPath()) {
-            return list
+            var items = [String]()
+            for item in list {
+                if (item.hasSuffix("-video.mp4") || item.hasSuffix("-image")) && !(item.contains("thumb")) {
+                    items.append(item)
+                }
+            }
+            return items
         }
         return [String]()
     }
@@ -124,6 +130,34 @@ class CaptureFileManager: NSObject {
 }
 
 extension CaptureFileManager {
+    public class func imageName() -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "yyyy-MM-dd-hh:mm:ss"
+        
+        var name = dateformat.string(from: Date())
+        name = name + "-image"
+        
+        return name
+    }
+
+    public class func videoName() -> String {
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "yyyy-MM-dd-hh:mm:ss"
+        
+        var name = dateformat.string(from: Date())
+        name = name + "-video.mp4"
+        
+        return name
+    }
+
+    public class func imagePath() -> URL? {
+        return temporaryPath(imageName())
+    }
+
+    public class func videoPath() -> URL? {
+        return temporaryPath(videoName())
+    }
+
     public class func save(image: UIImage, withName fileName: String) -> Bool {
         if let path = self.temporaryPath(fileName) {
             if let data = UIImageJPEGRepresentation(image, 1.0) {

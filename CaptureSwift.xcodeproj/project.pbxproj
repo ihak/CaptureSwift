@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2F075EEE1E39040000F23C5A /* CaptureImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F075EED1E39040000F23C5A /* CaptureImageItem.swift */; };
 		2F075EF01E39163200F23C5A /* CaptureStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F075EEF1E39163200F23C5A /* CaptureStackView.swift */; };
+		2F8ECA771EACC736003D8C43 /* CaptureItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8ECA761EACC736003D8C43 /* CaptureItemsViewController.swift */; };
+		2F8ECA791EACC9E2003D8C43 /* CaptureItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8ECA781EACC9E2003D8C43 /* CaptureItemCollectionCell.swift */; };
 		2FDA87851E40F713001C6E05 /* CaptureVideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA87841E40F713001C6E05 /* CaptureVideoItem.swift */; };
 		2FDA87871E40FB3C001C6E05 /* CaptureItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDA87861E40FB3C001C6E05 /* CaptureItem.swift */; };
 		2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A74E1E2A2879006CACF2 /* AppDelegate.swift */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		2F075EED1E39040000F23C5A /* CaptureImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureImageItem.swift; sourceTree = "<group>"; };
 		2F075EEF1E39163200F23C5A /* CaptureStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureStackView.swift; sourceTree = "<group>"; };
+		2F8ECA761EACC736003D8C43 /* CaptureItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureItemsViewController.swift; sourceTree = "<group>"; };
+		2F8ECA781EACC9E2003D8C43 /* CaptureItemCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureItemCollectionCell.swift; sourceTree = "<group>"; };
 		2FDA87841E40F713001C6E05 /* CaptureVideoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureVideoItem.swift; sourceTree = "<group>"; };
 		2FDA87861E40FB3C001C6E05 /* CaptureItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptureItem.swift; sourceTree = "<group>"; };
 		2FE4A74B1E2A2879006CACF2 /* CaptureSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptureSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +185,8 @@
 				2F075EEF1E39163200F23C5A /* CaptureStackView.swift */,
 				2FDA87841E40F713001C6E05 /* CaptureVideoItem.swift */,
 				2FDA87861E40FB3C001C6E05 /* CaptureItem.swift */,
+				2F8ECA761EACC736003D8C43 /* CaptureItemsViewController.swift */,
+				2F8ECA781EACC9E2003D8C43 /* CaptureItemCollectionCell.swift */,
 			);
 			name = CaptureFramework;
 			sourceTree = "<group>";
@@ -351,9 +357,11 @@
 				2FE4A79C1E2B6372006CACF2 /* CameraEngineMetadataOutput.swift in Sources */,
 				2FE4A7981E2B6372006CACF2 /* CameraEngineFileManager.swift in Sources */,
 				2FDA87851E40F713001C6E05 /* CaptureVideoItem.swift in Sources */,
+				2F8ECA791EACC9E2003D8C43 /* CaptureItemCollectionCell.swift in Sources */,
 				2FE4A74F1E2A2879006CACF2 /* AppDelegate.swift in Sources */,
 				2FE4A79A1E2B6372006CACF2 /* CameraEngineGifEncoder.swift in Sources */,
 				2FE4A7961E2B6372006CACF2 /* CameraEngineDeviceInput.swift in Sources */,
+				2F8ECA771EACC736003D8C43 /* CaptureItemsViewController.swift in Sources */,
 				2FE4A79E1E2B6372006CACF2 /* CameraEngineVideoEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

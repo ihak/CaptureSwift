@@ -13,21 +13,25 @@ import AVFoundation
 class CaptureVideoItem: CaptureItem {
     var url: URL!
     
+    convenience override init() {
+        self.init(url: CaptureFileManager.videoPath()!)
+    }
+    
     init(url: URL) {
-        let dateformat = DateFormatter()
-        dateformat.dateFormat = "yyyy-MM-dd-hh:mm:ss"
-        let name = dateformat.string(from: Date())
-
         super.init()
-        self.name = name + ".mp4"
+        self.name = url.lastPathComponent
         self.url = url
         
         if let thumb = self.generateThumbnail(url: self.url) {
             thumbnailImage = thumb
+            saveThumbnail()
         }
         
         let _ = CaptureFileManager.sizeOf(itemAtPath: self.url)
-
+    }
+    
+    convenience init(name: String) {
+            self.init(url: CaptureFileManager.temporaryPath(name)!)
     }
     
     func generateThumbnail(url: URL) -> UIImage? {

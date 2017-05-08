@@ -11,27 +11,66 @@ import UIKit
 
 class CaptureStack {
     
-    var list = [CaptureItem]()
+    private var _list = [CaptureItem]()
+    
+    var list: [CaptureItem] { return self._list }
+    
+    
     var delegate: CaptureStackDelegate?
     
     init() {
     }
     
-    func push(image: UIImage) {
-        list.insert(CaptureImageItem(image: image), at: 0)
+    func loadTemporaryDirectoryImages() {
+        let list = CaptureFileManager.listFilesInTempDirectory()
+        
+        for item in list {
+            push(name: item)
+        }
+    }
+    
+    func push(captureItem: CaptureItem) {
+        _list.insert(captureItem, at: 0)
         delegate?.didAddItem(item: list.first!)
+    }
+    
+    func push(image: UIImage) {
+        push(captureItem: CaptureImageItem(image: image))
+    }
+    
+    func push(name: String) {
+        if name.hasSuffix("-video.mp4") {
+            push(captureItem: CaptureVideoItem(name: name))
+        }
+        else {
+            push(captureItem: CaptureImageItem(name: name))
+        }
     }
     
     func push(url: URL) {
-        list.insert(CaptureVideoItem(url: url), at: 0)
-        delegate?.didAddItem(item: list.first!)
+        push(captureItem: CaptureVideoItem(url: url))
     }
     
     func pop() -> CaptureItem {
-        return list.remove(at: 0)
+        return _list.remove(at: 0)
+    }
+    
+    func removeItem(at: Int) -> CaptureItem? {
+        if at < _list.count {
+            return _list.remove(at: at)
+        }
+        return nil
+    }
+    
+    func removeItems(set: Set<Int>) {
+        for index in set {
+            _list.remove(at: index)
+        }
+        delegate?.didUpdateCaptureStack(captureStack: self)
     }
 }
 
 protocol CaptureStackDelegate {
     func didAddItem(item: CaptureItem)
+    func didUpdateCaptureStack(captureStack: CaptureStack)
 }
