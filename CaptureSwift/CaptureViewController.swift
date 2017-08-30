@@ -43,6 +43,7 @@ class CaptureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.cameraEngine.rotationCamera = true
         self.cameraEngine.startSession()
         
         // Set the flash mode to a default value of .auto

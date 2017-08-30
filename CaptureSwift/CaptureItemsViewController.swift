@@ -39,15 +39,14 @@ class CaptureItemsViewController: UIViewController {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+        if segue.identifier == "SegueShowPlayerView" {
+            if let vc = segue.destination as? PlayerViewController {
+                vc.captureItem = sender as? CaptureVideoItem
+            }
+        }
      }
-     */
 
     
     //MARK: - IBActions
@@ -75,7 +74,9 @@ extension CaptureItemsViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItems.insert(indexPath.row)
+//        selectedItems.insert(indexPath.row)
+        let captureItem = self.captureStack.list[indexPath.row]
+        self.performSegue(withIdentifier: "SegueShowPlayerView", sender: captureItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
