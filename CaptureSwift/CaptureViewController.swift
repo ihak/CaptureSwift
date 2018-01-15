@@ -65,6 +65,10 @@ class CaptureViewController: UIViewController {
         captureStackView.delegate = self
     }
     
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return UIInterfaceOrientationMask(rawValue: UIInterfaceOrientationMask.RawValue(UInt8(UIInterfaceOrientation.landscapeLeft.rawValue) | UInt8(UIInterfaceOrientation.landscapeRight.rawValue) | UInt8(UIInterfaceOrientation.portrait.rawValue)))
+//    }
+    
     override func viewDidLayoutSubviews() {
         if let layer = self.cameraEngine.previewLayer {
             layer.frame = self.view.bounds

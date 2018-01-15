@@ -295,20 +295,20 @@ public class CameraEngine: NSObject {
     //MARK: Device management
     
     private func handleDeviceOrientation() {
-//        if self.rotationCamera {
-//			if (!UIDevice.current.isGeneratingDeviceOrientationNotifications) {
-//				UIDevice.current.beginGeneratingDeviceOrientationNotifications()
-//			}
-//            NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { (_) -> Void in
-//                self.previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.orientationFromUIDeviceOrientation(UIDevice.current.orientation)
-//            }
-//        }
-//        else {
-//			if (UIDevice.current.isGeneratingDeviceOrientationNotifications) {
-//				UIDevice.current.endGeneratingDeviceOrientationNotifications()
-//			}
-//            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-//        }
+        if self.rotationCamera {
+            if (!UIDevice.current.isGeneratingDeviceOrientationNotifications) {
+                UIDevice.current.beginGeneratingDeviceOrientationNotifications()
+            }
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { (_) -> Void in
+                self.previewLayer?.connection.videoOrientation = AVCaptureVideoOrientation.orientationFromUIDeviceOrientation(UIDevice.current.orientation)
+            }
+        }
+        else {
+            if (UIDevice.current.isGeneratingDeviceOrientationNotifications) {
+                UIDevice.current.endGeneratingDeviceOrientationNotifications()
+            }
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        }
     }
     
     public func changeCurrentDevice(_ position: AVCaptureDevicePosition) {
