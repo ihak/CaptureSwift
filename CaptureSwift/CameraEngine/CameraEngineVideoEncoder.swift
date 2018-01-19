@@ -101,7 +101,7 @@ class CameraEngineVideoEncoder {
         return CameraEngineVideoEncoderEncoderSettings.Preset1920x1080.configuration()
     }()
     
-    private func initVideoEncoder(_ url: URL) {
+    private func initVideoEncoder(_ url: URL, _ position: AVCaptureDevice.Position) {
         self.firstFrame = false
         guard let presetSettingEncoder = self.presetSettingEncoder else {
             print("[Camera engine] presetSettingEncoder = nil")
@@ -127,7 +127,12 @@ class CameraEngineVideoEncoder {
         
         self.videoInputWriter = AVAssetWriterInput(mediaType: AVMediaTypeVideo, outputSettings: videoOutputSettings)
         self.videoInputWriter.expectsMediaDataInRealTime = true
-        self.videoInputWriter.transform = CGAffineTransform(rotationAngle: UIDevice.orientationTransformation())
+        
+        var transform = CGAffineTransform(rotationAngle: UIDevice.orientationTransformation())
+        if position == .front {
+            transform = transform.scaledBy(x: 1.0, y: -1.0)
+        }
+        self.videoInputWriter.transform = transform
         
         self.audioInputWriter = AVAssetWriterInput(mediaType: AVMediaTypeAudio, outputSettings: audioOutputSettings)
         self.audioInputWriter.expectsMediaDataInRealTime = true
@@ -140,10 +145,10 @@ class CameraEngineVideoEncoder {
         }
     }
     
-    func startWriting(_ url: URL) {
+    func startWriting(_ url: URL, position: AVCaptureDevice.Position) {
         self.firstFrame = false
         self.startTime = CMClockGetTime(CMClockGetHostTimeClock())
-        self.initVideoEncoder(url)
+        self.initVideoEncoder(url, position)
     }
     
     func stopWriting(_ blockCompletion: blockCompletionCaptureVideo?) {
@@ -171,6 +176,23 @@ class CameraEngineVideoEncoder {
             if isVideo {
                 if self.videoInputWriter.isReadyForMoreMediaData {
                     self.videoInputWriter.append(sampleBuffer)
+                    
+                    var status = "Unknown"
+                    switch(self.assetWriter.status) {
+                    case .unknown:
+                        status = "Unknown"
+                    case .failed:
+                        status = "Failed"
+                    case .cancelled:
+                        status = "Cancelled"
+                    case .writing:
+                        status = "Writing"
+                    case .completed:
+                        status = "Completed"
+                    }
+                    
+                    print("Writer status: \(status)")
+
                 }
             }
             else {

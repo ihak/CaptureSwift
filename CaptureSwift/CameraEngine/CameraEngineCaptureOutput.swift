@@ -65,9 +65,9 @@ class CameraEngineCaptureOutput: NSObject {
         self.videoEncoder.presetSettingEncoder = videoEncoderPresset.configuration()
     }
     
-    func startRecordVideo(_ blockCompletion: @escaping blockCompletionCaptureVideo, url: URL) {
+    func startRecordVideo(_ position: AVCaptureDevice.Position, _ blockCompletion: @escaping blockCompletionCaptureVideo, url: URL) {
         if self.isRecording == false {
-            self.videoEncoder.startWriting(url)
+            self.videoEncoder.startWriting(url, position: position)
             self.isRecording = true
         }
         else {

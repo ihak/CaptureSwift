@@ -471,7 +471,7 @@ public extension CameraEngine {
     public func startRecordingVideo(_ url: URL, blockCompletion: @escaping blockCompletionCaptureVideo) {
         if self.isRecording == false {
             self.sessionQueue.async(execute: { () -> Void in
-                self.cameraOutput.startRecordVideo(blockCompletion, url: url)
+                self.cameraOutput.startRecordVideo(self.cameraDevice.currentPosition, blockCompletion, url: url)
             })
         }
     }
